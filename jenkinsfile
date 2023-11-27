@@ -55,7 +55,7 @@ pipeline{
 
                 script{
                 sh  'docker build -t myuber .'
-                sh'docker tag myuber:latest edwin123456789000/my_repo: first-image'
+                sh 'docker tag myuber:latest edwin123456789000/my_repo:new.image'
                 }
             }
         }
