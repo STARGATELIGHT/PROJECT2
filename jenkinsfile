@@ -59,6 +59,18 @@ pipeline{
                 }
             }
         }
+        stage('push image to Docker Hub'){
+            steps{
+
+                script{
+                    withCredentials([string(credentialsId: 'docker-auth', variable: 'docker cred')]{
+                        sh 'docker login -u edwin123456789000  -p $(docker cred)'
+                        sh 'docker tag myuber:latest edwin123456789000/my_repo:new.image'
+                        sh 'docker push edwin123456789000/my_repo:new.image'
+                    }
+                }
+            }
+        }
 
     }
 }
